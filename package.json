@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.10.0",
+    "genkit": "^1.10.0"
+  }
+}
