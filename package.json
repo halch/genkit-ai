@@ -1,7 +1,25 @@
 {
-  "type": "module",
+  "name": "genkit-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halch/genkit-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/halch/genkit-ai/issues"
+  },
+  "homepage": "https://github.com/halch/genkit-ai#readme",
   "dependencies": {
-    "@genkit-ai/googleai": "^1.10.0",
-    "genkit": "^1.10.0"
+    "@genkit-ai/googleai": "^1.11.0",
+    "genkit": "^1.11.0"
   }
 }
