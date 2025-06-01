@@ -25,10 +25,15 @@
   "homepage": "https://github.com/halch/genkit-ai#readme",
   "dependencies": {
     "@genkit-ai/googleai": "^1.11.0",
-    "genkit": "^1.11.0"
+    "@genkit-ai/vertexai": "^1.11.0",
+    "genkit": "^1.11.0",
+    "pdf-parse": "^1.1.1",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/readline-sync": "^1.4.8",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }

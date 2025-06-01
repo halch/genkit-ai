@@ -137,3 +137,6 @@ dist
 
 # genkit files
 .genkit
+
+# claude files
+.claude
