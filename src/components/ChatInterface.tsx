@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, Trash2, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Message {
@@ -31,10 +31,22 @@ export default function ChatInterface() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
+    sendMessage(input.trim());
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
+  const sendMessage = async (messageText: string) => {
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
-      content: input.trim(),
+      content: messageText,
       timestamp: new Date(),
     };
 
@@ -43,12 +55,21 @@ export default function ChatInterface() {
     setIsLoading(true);
 
     try {
+      // Prepare conversation history (excluding the current message)
+      const history = messages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage.content }),
+        body: JSON.stringify({ 
+          message: userMessage.content,
+          history: history 
+        }),
       });
 
       if (!response.ok) {
@@ -79,8 +100,28 @@ export default function ChatInterface() {
     }
   };
 
+  const handleClearConversation = () => {
+    setMessages([]);
+  };
+
   return (
     <Card className="w-full max-w-4xl mx-auto h-[600px] flex flex-col">
+      <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center gap-2">
+          <MessageSquare className="h-5 w-5 text-muted-foreground" />
+          <h2 className="text-lg font-semibold">AI Chat</h2>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleClearConversation}
+          disabled={messages.length === 0}
+          className="text-muted-foreground"
+        >
+          <Trash2 className="h-4 w-4 mr-2" />
+          Clear
+        </Button>
+      </div>
       <ScrollArea className="flex-1 p-4">
         <div className="space-y-4">
           {messages.length === 0 && (
@@ -129,6 +170,7 @@ export default function ChatInterface() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Type your message..."
           disabled={isLoading}
           className="flex-1"
