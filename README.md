@@ -35,7 +35,6 @@ A Next.js chat application that integrates with Google's Genkit AI for conversat
 - `npm run dev` - Start the Next.js development server
 - `npm run build` - Build the application for production
 - `npm run start` - Start the production server
-- `npm run genkit` - Run the original Genkit PDF analyzer CLI tool
 
 ## Project Structure
 
@@ -44,4 +43,3 @@ A Next.js chat application that integrates with Google's Genkit AI for conversat
   - `/index.tsx` - Main chat page
 - `/src/components` - React components
   - `ChatInterface.tsx` - Main chat UI component
-- `/src/index.ts` - Original Genkit PDF analyzer (CLI tool)
