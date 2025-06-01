@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ChatInterface from '../src/components/ChatInterface';
+import { MessageSquare } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column',
-      backgroundColor: '#f5f5f5'
-    }}>
-      <header style={{
-        backgroundColor: '#1976d2',
-        color: 'white',
-        padding: '1rem',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-      }}>
-        <h1 style={{ margin: 0, fontSize: '1.5rem' }}>Genkit AI Chat</h1>
+    <div className="min-h-screen bg-background">
+      <header className="border-b bg-card">
+        <div className="container mx-auto px-4 py-4 flex items-center gap-2">
+          <MessageSquare className="h-6 w-6 text-primary" />
+          <h1 className="text-2xl font-bold">Genkit AI Chat</h1>
+        </div>
       </header>
-      <main style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '2rem' }}>
+      <main className="container mx-auto px-4 py-8">
         <ChatInterface />
       </main>
     </div>
