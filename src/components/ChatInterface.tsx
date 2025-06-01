@@ -42,7 +42,6 @@ export default function ChatInterface() {
   };
 
   const sendMessage = async (messageText: string) => {
-
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
@@ -67,7 +66,7 @@ export default function ChatInterface() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          message: userMessage.content,
+          message: messageText,
           history: history 
         }),
       });

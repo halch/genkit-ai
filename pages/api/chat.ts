@@ -57,7 +57,7 @@ You're friendly and professional in your communication style.`
       content: [{ text: message }],
     });
 
-    // Generate response with full conversation context
+    // Generate response without streaming for now
     const { text } = await ai.generate({
       messages,
       config: {
