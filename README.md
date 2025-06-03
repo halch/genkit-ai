@@ -17,10 +17,10 @@ A Next.js chat application that integrates with Google's Genkit AI for conversat
    ```
 
 2. Set up your Google AI API key:
-   - Make sure you have `GOOGLE_GENAI_API_KEY` environment variable set
+   - Make sure you have `GEMINI_API_KEY` environment variable set
    - Or create a `.env.local` file with:
      ```
-     GOOGLE_GENAI_API_KEY=your_api_key_here
+     GEMINI_API_KEY=your_api_key_here
      ```
 
 3. Run the development server:
